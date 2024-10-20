@@ -1,0 +1,47 @@
+<div class="loader">
+  <div class='loader__spinner loader-spinner'></div>
+</div>
+<style>
+    .loader {
+        position: fixed;
+        z-index: 1031;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .loader-spinner {
+        display: block;
+        width: 30px;
+        height: 30px;
+        box-sizing: border-box;
+        border: solid 3px transparent;
+        border-top-color: hsla(27, 100%, 49%, 1);
+        border-left-color: hsla(27, 100%, 49%, 1);
+        border-bottom-color: #efefef;
+        border-right-color: #efefef;
+        border-radius: 50%;
+        -webkit-animation: loader 700ms linear infinite;
+        animation: loader 700ms linear infinite;
+    }
+
+    @-webkit-keyframes loader {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @keyframes loader {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>

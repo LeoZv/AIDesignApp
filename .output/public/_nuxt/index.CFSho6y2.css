@@ -1,0 +1,1 @@
+@keyframes movingFlare-b865ed53{0%{left:-30px}30%{left:110%}to{left:120%}}.room-type-list[data-v-b865ed53]{display:grid;grid-gap:15px;grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}@media (min-width:767px){.room-type-list[data-v-b865ed53]{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}}
