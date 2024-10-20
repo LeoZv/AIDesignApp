@@ -1,0 +1,144 @@
+$widescreen-min: 1440px
+$mobile-max: 550px
+$tablet-max: 1024px
+
+// -==========================================================================================================
+@mixin from-tablet()
+    @media (min-width: $tablet-max + 1)
+        @content
+
+@mixin from-desktop()
+    @media (min-width: $tablet-max + 1)
+        @content
+
+@mixin from-widescreen()
+    @media (min-width: $widescreen-min)
+        @content
+
+@mixin from-mob()
+    @media (min-width: $mobile-max + 1)
+        @content
+
+// -==========================================================================================================
+@mixin while-mob()
+    @media (max-width: $mobile-max)
+        @content
+
+@mixin until-tablet()
+    @media (max-width: $tablet-max)
+        @content
+
+@mixin until-desktop()
+    @media (max-width: $widescreen-min - 1)
+        @content
+
+@mixin until-widescreen()
+    @media (max-width: $widescreen-min - 1)
+        @content
+
+// -==========================================================================================================
+@mixin media-until($width)
+    @media (max-width: $width)
+        @content
+
+@mixin media-from($width)
+    @media (min-width: $width)
+        @content
+
+@mixin placeholder
+    position: relative
+    background-color: var(--color_onsurface_quaternary)
+    border-radius: 5px
+    overflow: hidden
+    &::after
+        content: ""
+        display: block
+        width: 10%
+        height: 200%
+        background: var(--color_surface_primary)
+        left: -40px
+        top: -50%
+        z-index: 1
+        transform: rotate(45deg)
+        position: absolute
+        animation: movingFlare 1.5s ease-in-out 0.1s infinite
+
+@mixin no-select
+    -webkit-tap-highlight-color: transparent
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    &:focus
+        outline: none !important
+
+@mixin hide-scrollbar
+    -ms-overflow-style: none
+    scrollbar-width: none
+    &::-webkit-scrollbar
+        display: none
+
+@mixin h2
+    font-weight: 600
+    font-size: 26px
+    line-height: 30px
+    +until-tablet
+        font-size: 24px
+        line-height: 24px
+    +while-mob
+        font-size: 20px
+
+@mixin h3
+    font-weight: 600
+    font-size: 18px
+    line-height: 1.4
+
+
+@mixin scrollBar
+    &::-webkit-scrollbar
+        appearance: none
+        -webkit-appearance: none
+        width: 8px
+        border-radius: 5px
+
+    &::-webkit-scrollbar-track
+        border-radius: 2px
+        background: #F2F2F2
+
+    &::-webkit-scrollbar-thumb
+        background-color: var(--primary-color)
+        border-radius: 4px
+        border: 1px solid #F2F2F2
+
+@mixin scrollBarMini
+    &::-webkit-scrollbar
+        appearance: none
+        -webkit-appearance: none
+        width: 3px
+        height: 3px
+        border-radius: 3px
+        background: var(--color_surface_primary)
+
+    &::-webkit-scrollbar-track
+        border-radius: 2px
+        background: var(--color_surface_primary)
+
+    &::-webkit-scrollbar-thumb
+        background-color: var(--primary-color)
+        border-radius: 4px
+
+
+@keyframes movingFlare
+    0%
+        left: -30px
+
+    30%
+        left: 110%
+
+    100%
+        left: 120%
+
+
+
