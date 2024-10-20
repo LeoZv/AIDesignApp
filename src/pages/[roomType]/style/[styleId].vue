@@ -11,7 +11,7 @@
             :preload="false"
             class="style__image style-image"
         />
-        <button class="style__button button" type="button">
+        <button @click="buttonClickHandler" class="style__button button" type="button">
             Выбрать стиль
         </button>
     </main>
@@ -19,9 +19,7 @@
 
 <script setup lang="ts">
 import {categories} from "~/constants/styles";
-import {useWebApp, useWebAppSendData} from "vue-tg";
-
-const {close} = useWebApp()
+import {useWebAppSendData} from "vue-tg";
 
 const route = useRoute()
 const router = useRouter()
@@ -38,8 +36,6 @@ const title = computed(() => unref(style).title)
 
 async function buttonClickHandler() {
     execute()
-    console.log(unref(error))
-
 }
 
 useHead({
