@@ -23,5 +23,7 @@ useHead({
 .room-type-list
     display: grid
     grid-gap: 15px
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr))
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+    +media-from(767px)
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
 </style>

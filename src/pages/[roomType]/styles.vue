@@ -73,5 +73,7 @@ useHead({
         font-weight: bold
 
 .category-style
-    width: 200px
+    width: 180px
+    +media-from(767px)
+        width: 250px
 </style>

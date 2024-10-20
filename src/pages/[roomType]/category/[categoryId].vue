@@ -1,9 +1,9 @@
 <template>
-    <main class="page room-type">
+    <main class="page category">
         <div class="page__head page-head">
-            <h2 @click="router.back()" class="page-head__title room-type__title">< {{ title }}:</h2>
+            <h2 @click="router.back()" class="page-head__title category__title">< {{ title }}:</h2>
         </div>
-        <div class="room-type__list room-type-list">
+        <div class="category__list category-list">
             <NuxtLink v-for="style in category.items" :key="style.id" :to="`/${route.params.roomType}/style/${style.id}`">
                 <ItemCard :item="style"/>
             </NuxtLink>
@@ -26,8 +26,10 @@ useHead({
 </script>
 
 <style lang="sass" scoped>
-.room-type-list
+.category-list
     display: grid
     grid-gap: 15px
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr))
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+    +media-from(767px)
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
 </style>
