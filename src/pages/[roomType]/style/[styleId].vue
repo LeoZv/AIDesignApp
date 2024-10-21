@@ -1,7 +1,7 @@
 <template>
     <main class="page style">
         <div class="page__head page-head">
-            <h2 @click="router.back()" class="page-head__title style__title">< {{ title }}:</h2>
+            <h2 @click="router.back()" class="page-head__title style-title">< {{ title }}:</h2>
         </div>
         <UnLazyImage
             :alt="style.title"
@@ -19,12 +19,14 @@
 
 <script setup lang="ts">
 import {categories} from "~/constants/styles";
-import {useWebAppSendData} from "vue-tg";
+import {useWebApp, useWebAppPopup, useWebAppSendData} from "vue-tg";
+import {parseQuery} from "vue-router";
 
 const route = useRoute()
 const router = useRouter()
 
-const {execute, error} = useWebAppSendData(
+const {canSendData, initDataUnsafe} = useWebApp()
+const {execute} = useWebAppSendData(
     {
         roomId: route.params.roomType,
         styleId: route.params.styleId,
@@ -35,7 +37,19 @@ const title = computed(() => unref(style).title)
 
 
 async function buttonClickHandler() {
-    execute()
+    if (canSendData) {
+        execute()
+    } else {
+        await useFetch(`https://api.telegram.org/bot7970546657:AAG6GFTdZTKsKx8iw9frFXdU3e3H0tdJj5w/sendMessage`, {
+            params: {
+                chat_id: initDataUnsafe?.user?.id,
+                text: JSON.stringify({
+                    roomId: route.params.roomType,
+                    styleId: route.params.styleId,
+                }),
+            }
+        })
+    }
 }
 
 useHead({
@@ -57,6 +71,10 @@ useHead({
     object-fit: cover
     aspect-ratio: 1
 
+
+.style-title
+    cursor: pointer
+
 .button
     width: 100%
     margin-top: auto
@@ -66,5 +84,6 @@ useHead({
     border-radius: var(--button-border-radius)
     background-color: var(--primary-color)
     align-self: flex-end
+
 
 </style>

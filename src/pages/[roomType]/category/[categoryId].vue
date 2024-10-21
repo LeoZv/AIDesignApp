@@ -1,7 +1,7 @@
 <template>
     <main class="page category">
         <div class="page__head page-head">
-            <h2 @click="router.back()" class="page-head__title category__title">< {{ title }}:</h2>
+            <h2 @click="router.back()" class="page-head__title category-title">< {{ title }}:</h2>
         </div>
         <div class="category__list category-list">
             <NuxtLink v-for="style in category.items" :key="style.id" :to="`/${route.params.roomType}/style/${style.id}`">
@@ -26,6 +26,9 @@ useHead({
 </script>
 
 <style lang="sass" scoped>
+.category-title
+    cursor: pointer
+
 .category-list
     display: grid
     grid-gap: 15px

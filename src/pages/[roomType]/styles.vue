@@ -1,7 +1,7 @@
 <template>
     <main class="page styles">
         <div class="page__head page-head">
-            <h2 @click="router.back()" class="page-head__title styles__title">< Выберите стиль интерьера: </h2>
+            <h2 @click="router.back()" class="page-head__title styles-title">< Выберите стиль интерьера: </h2>
         </div>
         <div class="styles__list styles-list">
             <div v-for="category in categories"  :key="category.id" class="styles-list__category category">
@@ -53,6 +53,9 @@ useHead({
     display: grid
     grid-gap: 25px
     grid-template-columns: 100%
+
+.styles-title
+    cursor: pointer
 
 .category
     display: grid
